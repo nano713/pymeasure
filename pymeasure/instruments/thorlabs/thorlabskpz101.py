@@ -57,6 +57,7 @@ class KPZ101():
         return max_voltage
     
     def get_voltage(self): 
+        """FIXME"""
         voltage = self.device.GetOutputVoltage()
         return voltage
     
