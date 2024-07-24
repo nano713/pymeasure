@@ -65,7 +65,7 @@ class KPZ101():
     
         min_volt = System.Decimal(0)
         max_volt = self.max_voltage()
-        if voltage != min_volt and voltage <= max_volt:
+        if voltage >= min_volt and voltage <= max_volt:
             self.device.SetOutputVoltage(voltage)
             time.sleep(1.0)
             log.info("Voltage set to %s" % voltage)
