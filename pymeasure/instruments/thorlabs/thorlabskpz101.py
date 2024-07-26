@@ -24,9 +24,9 @@ import time
 
 
 class KPZ101():
-    def __init__(self):
+    def __init__(self, serial_number):
         DeviceManagerCLI.BuildDeviceList()
-        serial_number = '29252556' #must add serial number
+        # serial_number = '29252556' #must add serial number
         self.device = KCubePiezo.CreateKCubePiezo(serial_number)
 
         self.device.Connect(serial_number)
@@ -57,6 +57,7 @@ class KPZ101():
         return max_voltage
     
     def get_voltage(self): 
+        """FIXME"""
         voltage = self.device.GetOutputVoltage()
         return voltage
     
@@ -72,6 +73,9 @@ class KPZ101():
 
         else: 
             log.error(f"Voltage must be between 0 and {max_volt}")
+
+    def is_connected(self):
+        return self.device.IsConnected()    
     
     def disconnect(self): 
         self.device.StopPolling()
