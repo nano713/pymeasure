@@ -28,8 +28,10 @@ class KPZ101():
         DeviceManagerCLI.BuildDeviceList()
         # serial_number = '29252556' #must add serial number
         self.device = KCubePiezo.CreateKCubePiezo(serial_number)
-
-        self.device.Connect(serial_number)
+        if self.device.IsConnected:
+            pass
+        else:
+            self.device.Connect(serial_number)
 
         info_device = self.device.GetDeviceInfo()
         log.info(info_device.Description)
