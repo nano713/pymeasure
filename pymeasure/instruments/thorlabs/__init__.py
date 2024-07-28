@@ -24,3 +24,5 @@
 
 from .thorlabspm100usb import ThorlabsPM100USB
 from .thorlabspro8000 import ThorlabsPro8000
+from .thorlabskdc101 import KDC101
+from .thorlabscs165mum import CS165MUM, ImageAcquisitionThread
