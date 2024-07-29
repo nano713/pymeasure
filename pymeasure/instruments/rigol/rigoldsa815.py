@@ -58,6 +58,13 @@ class DSA815(Instrument):
         """Reads and sets continuous sweep on (1) or off (0)""",
     ) 
 
+    linear_scale = Instrument.control(
+        ":UNIT:POWer?",
+        ":UNIT:POWer %s",
+        """Reads and sets the unit of the Y axis. 
+        Returns DBM, DBMV, DBUM, V or W""",
+    )
+
     def __init__(self, adapter, name="RIGOL DSA815 Spectrum Analyzer", **kwargs):
         super().__init__(
             adapter,
@@ -90,6 +97,7 @@ class DSA815(Instrument):
         """
        trace1 = self.trace()
        return pd.DataFrame({
-            'Frequency (GHz)': self.frequencies(len(trace1)) * 1e-9,
+            'Frequency (GHz)': self.frequencies(len(trace1)),
             'Amplitude (dBm)': trace1
             })
+    
